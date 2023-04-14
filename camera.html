@@ -1,0 +1,42 @@
+<h3>Qr Code Scan by Web Cam</h3>
+<script src="./node_modules/html5-qrcode/html5-qrcode.min.js"></script>
+<div id="reader"></div>
+<div id="result"></div>
+<script>
+    const scanner = new Html5QrcodeScanner('reader',{
+        qrbox: {
+            width:400,
+            height:350,
+        },
+        fps:20,
+    })
+    scanner.render(success,error);
+    function success(result){
+        console.log(result);
+        // document.getElementById('result').innerHTML=`
+        // <h2>Success!</h2>
+        // <p><a href="${result}">${result}</a></p>
+        // `;
+        
+            const axios = require("axios")
+        axios.get('http://localhost:3000/validate/hello@word').then(res=>{
+            const data = res.data;
+            document.getElementById('result').innerHTML=`
+            <h2>Success!</h2>
+            <div>${result}</div>
+            <div>${res.data.message}</div>
+            `;
+        }).catch(err=>{
+            console.log(err)
+        })
+
+
+        
+        scanner.clear();
+        document.getElementById('reader').remove();
+
+    }
+    function error(err){
+        console.error(err);
+    }
+</script>
