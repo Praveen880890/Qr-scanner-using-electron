@@ -1,6 +1,3 @@
-Certainly! Here's a README.md file for your QR Scanner application using Electron.js:
-
-```markdown
 # QR Scanner using Electron.js
 
 This Electron.js application allows you to scan QR codes using your computer's webcam. It provides a simple interface for capturing QR codes and validating them against a predefined string.
